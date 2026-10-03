@@ -1,0 +1,708 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+:root{
+    --bgColor: linear-gradient(180deg, lightblue, #23bef1, #2d55db, blue);
+    --brandBgColor: #2d55dba8;
+    --brandShadow: 0px 0px 10px #5ab2cf;
+    --brandTxtColor: whitesmoke;
+    --searchBarBg: #23bef1;
+    --searchBarShadow: 0px 0px 10px #23bef1;
+    --searchBarPlaceholder: #0f0f0f;
+    --searchBarHoverBg: #2d55db;
+    --searchBarHoverShadow: 0px 0px 10px #2d55db;
+    --textColorPrimary: whitesmoke;
+    --locationInfoShadow: 0px 0px 10px #2d55db;
+    --tempConPrimaryBg: linear-gradient(45deg, #23bef19d, #2d55db9d, #2d55db9d, #23bef19d);
+    --tempConShadow: 0px 0px 5px #23bef1;
+    --tempConSecondaryBg: linear-gradient(45deg, #2d55db9d, #23bef19d, #23bef19d, #2d55db9d);
+    --minMaxBorder: solid 5px #0051ff67;
+    --arrowSVGFill: #23bef1;
+    --tempUnitsColor: #23bef1;
+    --oneHourBg: #00bfff3a;
+    --oneHourShadow: 0px 0px 5px #00bfff;
+    --scrollBarThumbColor: #23bef1;
+    --scrollBarThumbColorHover: #1581a5;
+}
+
+.darkmode{
+    --bgColor: linear-gradient(180deg, #020233, #0c2447, #103163, #020233);
+    --brandBgColor: #1f47c9a8;
+    --brandShadow: 0px 0px 10px #103163;
+    --brandTxtColor: lightgray;
+    --searchBarBg: #103163;
+    --searchBarShadow: 0px 0px 10px #103163;
+    --searchBarPlaceholder: lightgray;
+    --searchBarHoverBg: #1a3cac;
+    --searchBarHoverShadow: 0px 0px 10px #1a3cac;
+    --textColorPrimary: lightgray;
+    --locationInfoShadow: 0px 0px 10px #1a3cac;
+    --tempConPrimaryBg: linear-gradient(45deg, #1031639d, #1f47c99d, #1f47c99d, #1031639d);
+    --tempConShadow: 0px 0px 5px #103163;
+    --tempConSecondaryBg: linear-gradient(45deg, #1f47c99d, #1031639d, #1031639d, #1f47c99d);
+    --minMaxBorder: solid 5px #1f58d467;
+    --arrowSVGFill: #00bfff;
+    --tempUnitsColor: #00bfff;
+    --oneHourBg: #00bfff3a;
+    --oneHourShadow: 0px 0px 5px #00bfff;
+    --scrollBarThumbColor: #23bef1;
+    --scrollBarThumbColorHover: #1581a5;
+}
+
+.eveningmode{
+    --bgColor: linear-gradient(180deg, #c5c54e, #d4d471, #fabe4e, #f8794b);
+    --brandBgColor: #f8794ba8;
+    --brandShadow: 0px 0px 10px #f8794b;
+    --brandTxtColor: #292929;
+    --searchBarBg: #f34506;
+    --searchBarShadow: 0px 0px 10px #f8794b;
+    --searchBarPlaceholder: #292929;
+    --searchBarHoverBg: #eb3f01;
+    --searchBarHoverShadow: 0px 0px 10px #eb3f01;
+    --textColorPrimary: #292929;
+    --locationInfoShadow: 0px 0px 10px #f8794b;
+    --tempConPrimaryBg: linear-gradient(45deg, #f8794b9d, #d4d4719d, #fabe4e9d, #f8794b9d);
+    --tempConShadow: 0px 0px 10px #9b6500;
+    --tempConSecondaryBg: linear-gradient(45deg, #d4d4719d, #f8794b9d, #f8794b9d, #fabe4e9d);
+    --minMaxBorder: solid 5px #ad7101a8;
+    --arrowSVGFill: #eb3f01;
+    --tempUnitsColor: #eb3f01;
+    --oneHourBg: #eb3f013a;
+    --oneHourShadow: 0px 0px 5px #eb3f01;
+    --scrollBarThumbColor: #fabe4e;
+    --scrollBarThumbColorHover: #ffa807;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--bgColor);
+    height: 100vh;
+    margin-top: 50px;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.welcome{
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--oneHourBg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease-in-out;
+    gap: 0;
+}
+
+.welcome h1{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 60px;
+    color: var(--arrowSVGFill);
+}
+
+.welcome.hide{
+    transform: scale(0);
+}
+
+.head-bar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+}
+
+.head-bar h1{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--brandTxtColor);
+    transition: 0.3s all ease-in-out;
+    background-color: var(--brandBgColor);
+    box-shadow: var(--brandShadow);
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0px 0px 10px 10px;
+    backdrop-filter: blur(2px);
+    transition: 0.3s all ease-in-out;
+}
+
+.tt{color: #ff2929;}
+
+.body-con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchbar-con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 95%;
+    justify-self: center;
+    transition: 0.3s ease-in-out;
+}
+
+#search{
+    outline: none;
+    border: none;
+    width: 90%;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Poppins";
+    border-radius: 50px;
+    background-color: var(--searchBarBg);
+    box-shadow: 0px 0px 10px --searchBarShadow;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+#search::placeholder{
+    color: var(--searchBarPlaceholder);
+    transition: 0.3s all ease-in-out;
+}
+
+#search:hover{
+    background-color: var(--searchBarHoverBg);
+    box-shadow: var(--searchBarHoverShadow);
+    color: var(--textColorPrimary);
+}
+
+#search:hover::placeholder{
+    color: var(--textColorPrimary);
+}
+
+.search-label{
+    background-color: var(--searchBarBg);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: var(--searchBarShadow);
+    transition: 0.3s all ease-in-out;
+}
+
+.searchbar-con:focus-within #search{
+    background-color: var(--searchBarHoverBg);
+    color: var(--textColorPrimary);
+    box-shadow: var(--searchBarHoverShadow);
+}
+
+.searchbar-con:focus-within #search::placeholder{
+    color: var(--textColorPrimary);
+}
+
+.search-label, .bi-search, #search{transition: 0.3s ease-in-out;}
+
+.search-label:hover{
+    background-color: var(--searchBarHoverBg);
+    box-shadow: var(--searchBarShadow);
+    cursor: pointer;
+}
+
+.search-label:hover .bi-search{
+    fill: var(--textColorPrimary);
+}
+
+.location-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    margin-top: 20px;
+    background-color: var(--brandBgColor);
+    width: 95%;
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    box-shadow: var(--locationInfoShadow);
+    transition: 0.3s all ease-in-out;
+}
+
+.loc-name{
+    font-family: "Poppins";
+    font-size: 20px;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--textColorPrimary);
+    transition: 0.3s all ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.weather-info,
+.forecast-info,
+.week-forecast-info,
+.sun-info,
+.moon-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    justify-self: center;
+    background-color: var(--brandBgColor);
+    box-shadow: var(--locationInfoShadow);
+    margin-top: 20px;
+    width: 95%;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 10px;
+    transition: 0.3s all ease-in-out;
+}
+
+.min-max-con,
+.feels-like,
+.full-day-forecast,
+.sun-info-con,
+.moon-info-con,
+.week-forecast{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    /*background-color: #23bef19d;*/
+    background: var(--tempConPrimaryBg); 
+    /*background: linear-gradient(45deg, #ffffff67, #dfd5d567, #dfd5d567, #ffffff67);*/
+    border-radius: 10px;
+    box-shadow: var(--tempConShadow);
+    font-family: "Poppins";
+    text-align: center;
+    transition: 0.3s all ease-in-out;
+    padding: 5px;
+}
+
+.feels-like{
+    background: var(--tempConSecondaryBg);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.current-temp-con{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    background:  var(--tempConPrimaryBg);
+    border-radius: 10px;
+    box-shadow: var(--tempConShadow);
+    font-family: "Poppins";
+    text-align: center;
+    transition: 0.3s all ease-in-out;
+    padding: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.current-temp-con .cat-text{
+    flex-basis: 100%;
+}
+
+.min-max-con{flex-direction: row;}
+
+.max-con,
+.min-con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+.min-con{border-left: var(--minMaxBorder)}
+.max-con{border-right: var(--minMaxBorder)}
+
+.bi-arrow-up,
+.bi-arrow-down{
+    fill: var(--arrowSVGFill);
+    transition: 0.3s all ease-in-out;
+}
+
+.cat-text{
+    color:var(--textColorPrimary);
+    font-size: 20px;
+    transition: 0.3s all ease-in-out;
+}
+
+.see-more{
+    color: var(--textColorPrimary);
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.current-temp,
+.max-temp,
+.min-temp{
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--textColorPrimary);
+    transition: 0.3s all ease-in-out;
+}
+
+.feels-like-txt,
+.feels-like-temp{
+    font-size: 20px;
+    color: var(--textColorPrimary);
+    font-weight: 400;
+    transition: 0.3s all ease-in-out;
+}
+
+.current-temp,
+.max-temp,
+.min-temp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-self: center;
+}
+
+.temp-units{
+    font-size: 25px;
+    color: var(--tempUnitsColor);
+    transition: 0.3s all ease-in-out;
+}
+
+.forecast-con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    scroll-behavior:smooth;
+}
+
+.forecast-con::-webkit-scrollbar{display: none;}
+
+.one-hour{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    width: 80px;
+    min-width: 80px;
+    background-color: var(--oneHourBg);
+    box-shadow: var(--oneHourShadow);
+    padding: 10px;
+    border-radius: 10px;
+    gap: 0px;
+}
+
+.one-hour > .time{
+    font-size: 18px;
+    font-family: "Poppins";
+    color: var(--textColorPrimary)
+}
+
+.one-hour > .temp{
+    font-size: 22px;
+    font-family: "Poppins";
+    color: var(--textColorPrimary)
+}
+
+.forecast-popup-info{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100vh;
+    /*background-color: #23bef19d;*/
+    /*background: linear-gradient(180deg, #020233c0, #0c2447c0, #103163c0, #020233c0);*/ 
+    /*background: linear-gradient(45deg, #ffffff67, #dfd5d567, #dfd5d567, #ffffff67);*/
+    background-color: var(--brandBgColor);
+    border-radius: 10px;
+    box-shadow: var(--tempConShadow);
+    font-family: "Poppins";
+    text-align: center;
+    transition: 0.3s all ease-in-out;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(3px);
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+    overflow: scroll;
+    margin-bottom: 200px;
+}
+
+.forecast-popup-info.active {
+    transform: scale(1);
+}
+
+.popup-content{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: var(--oneHourShadow);
+    background-color: var(--oneHourBg);
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 70px;
+    background-color: var(--brandBgColor);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header .weather-icon{
+    width: 100px;
+    height: 100px;
+}
+
+.header button{
+    width: 40px;
+    height: 40px;
+    font-family: "Poppins";
+    font-size: 20px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: var(--searchBarBg);
+    box-shadow: var(--searchBarShadow);
+    color: var(--textColorPrimary);
+    transition: 0.3s ease-in-out;
+}
+
+.header button:hover{
+    background-color: var(--searchBarHoverBg);
+    box-shadow: var(--searchBarHoverShadow);
+    transform: rotate(360deg);
+}
+
+.header .time,
+.header .temp{
+    font-size: 22px;
+    font-family: "Poppins";
+    color: var(--textColorPrimary);
+    font-weight: 600;
+}
+
+.mini-containers{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    /* flex-wrap: balance; */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mini-con{
+    width: 47%;
+    background-color: var(--brandBgColor);
+    border-radius: 10px;
+    height:220px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.mini-con img{
+    width: 100px;
+    height: 100px;
+}
+
+.outlook-con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 2px;
+}
+
+.day-con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 97%;
+    background-color: var(--oneHourBg);
+    box-shadow: var(--oneHourShadow);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.day{width: 10%}
+
+.day,
+.humid{
+    font-size: 15px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.temps,
+.hum{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.hum{gap: 0;}
+
+.hum img{
+    width: 50px;
+    height:50px;
+}
+
+.temps .max-temp,
+.temps .min-temp{
+    font-size: 15px;
+}
+
+.sunrise-con .time,
+.sunset-con .time,
+.moonrise-con .time,
+.moonset-con .time{
+    font-size: 18px;
+    font-family: "Poppins";
+    color: var(--textColorPrimary);
+}
+
+.sun-info-con,
+.moon-info-con{
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.sunrise-con,
+.sunset-con,
+.moonrise-con,
+.moonset-con,
+.moonphase{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: var(--oneHourShadow);
+    background-color: var(--oneHourBg);
+    width: 40%;
+}
+
+.moonphase{width: 90%}
+
+.footer{
+    background: var(--tempConPrimaryBg);
+    width: 100%;
+    padding: 10px 0 10px 0;
+    box-shadow: var(--tempConShadow);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.footer-content p{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Poppins";
+    color: var(--textColorPrimary);
+    margin: 10px;
+}
+
+.footer-content hr{
+    width: 100%;
+    background-color: var(--arrowSVGFill);
+    border-color: var(--arrowSVGFill);
+}
+
+.footer-content p > a{
+    color: var(--arrowSVGFill)
+}
+
+.site-provisions{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.site-provisions p{
+    text-wrap: balance;
+}
+
+.foot-icons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.bi-github{
+    width: 40px;
+    height: 40px;
+    fill: black;
+    transition: 0.5s ease-in-out;
+    cursor:pointer
+}
+
+.foot-icons img{
+    width: 50px;
+    height: 50px;
+    transition: 0.5s ease-in-out;
+}
+
+.foot-icons img:hover{
+    transform: rotate(360deg);
+}
+
+.bi-github:hover{
+    transform: rotate(360deg);
+    fill: var(--arrowSVGFill)
+}
+
+.copyright{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

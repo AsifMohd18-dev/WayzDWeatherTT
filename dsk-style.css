@@ -1,0 +1,253 @@
+/*! Desktop*/
+@media (min-width: 1025px) {
+    body{
+        text-align: center;
+    }
+
+    .welcome img{
+        width: 500px;
+        height: 500px;
+    }
+
+    .welcome h1{
+        font-size: 80px;
+    }
+
+    .head-bar h1{
+        width: 90%;
+    }
+
+    .searchbar-con{
+        width: 30%;
+    }
+
+    .location-info{
+        width: 60%;
+    }
+
+    .dsk{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        gap: 20px;
+    }
+
+    .weather-info{
+        width: 90%;
+        flex-direction: row;
+        /* flex-wrap: wrap; */
+    }
+
+    .current-temp-con,
+    .feels-like,
+    .min-max-con{
+        width: 30%;
+    }
+
+    .feels-like-txt,
+    .feels-like-temp{
+        font-weight: 600;
+        font-size: 40px;
+        text-wrap: balance;
+    }
+
+    .feels-like-temp .temp-units{
+        font-size: 40px;
+    }
+
+    .max-con,
+    .min-con{
+        border: none;
+    }
+
+    .forecast-popup-info{
+        width: 90%;
+        flex-direction: row;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: calc(100vh - 120px);
+        margin-bottom: 0;
+        position: fixed;
+        top: 100px;
+    }
+
+    .popup-content{
+        width: 100%;
+        height: fit-content
+    }
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        font-size: 35px;
+    }
+
+    .header .time,
+    .header .temp{
+        font-size: 30px;
+    }
+
+    #exit{
+        position: absolute;
+        right: 100px;
+    }
+
+    .mini-con{
+        width: 25%;
+        height: auto;
+    }
+
+    .mini-con img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .mini-con .cat-text{
+        font-size: 25px;
+    }
+
+    .full-day-forecast .cat-text{
+        font-size: 30px;
+    }
+
+    .forecast-info{
+        width: 90%;
+    }
+    
+    .forecast-con{
+        overflow:auto;
+        scroll-behavior: smooth;
+    }
+
+    .forecast-con::-webkit-scrollbar{
+        display: block;
+        height: 10px;
+    }
+
+    body::-webkit-scrollbar,
+    .forecast-popup-info.active::-webkit-scrollbar{
+        display: block;
+        width: 10px;
+    }
+
+    body::-webkit-scrollbar-track,
+    .forecast-con::-webkit-scrollbar-track,
+    .forecast-popup-info.active::-webkit-scrollbar-track{
+        background: var(--searchBarBg)
+    }
+
+    body::-webkit-scrollbar-thumb,
+    .forecast-con::-webkit-scrollbar-thumb,
+    .forecast-popup-info.active::-webkit-scrollbar-thumb{
+        background-color: var(--scrollBarThumbColor);
+        border-radius: 10px;
+        cursor:grab;
+    }
+
+    body::-webkit-scrollbar-thumb:hover,
+    .forecast-con::-webkit-scrollbar-thumb:hover,
+    .forecast-popup-info.active::-webkit-scrollbar:hover{
+        background-color: var(--scrollBarThumbColorHover);
+    }
+
+    .one-hour{
+        min-width: 15%;
+        cursor: pointer
+    }
+
+    .one-hour > .time{
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .one-hour > .temp{
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .week-forecast-info{
+        width: 90%;
+    }
+
+    .week-forecast-info .cat-text{
+        font-size: 30px;
+    }
+
+    .outlook-con{
+        gap: 10px;
+    }
+
+    .outlook-con .cat-text{
+        font-size: 30px
+    }
+
+    .outlook-con .day,
+    .outlook-con .hum > .humid,
+    .outlook-con .temps > .max-temp,
+    .outlook-con .temps > .min-temp{
+        font-size: 25px;
+    }
+
+    .hum img,
+    .day-con span > img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .day-con{
+        width: 90%;
+    }
+
+    .temps{
+        gap: 30px;
+    }
+
+    .sun-info,
+    .moon-info{
+        width: 90%;
+    }
+    
+    .sunrise-con .cat-text,
+    .sunset-con .cat-text,
+    .moonrise-con .cat-text,
+    .moonset-con .cat-text,
+    .moonphase .cat-text{
+        font-size: 30px;
+    }
+
+    .sunrise-con .time,
+    .sunset-con .time,
+    .moonrise-con .time,
+    .moonset-con .time,
+    .moonphase .time{
+        font-size: 30px;
+    }
+
+    .sunrise-con img,
+    .sunset-con img,
+    .moonrise-con img,
+    .moonset-con img,
+    .moonphase img{
+        width: 250px;
+        height: 250px;
+    }
+
+    .moon-info-con{
+        flex-direction: row;
+    }
+
+    .moonrise-con,
+    .moonset-con,
+    .moonphase{
+        width: 30%;
+    }
+
+    .site-provisions{
+        flex-direction: row;
+    }
+}
