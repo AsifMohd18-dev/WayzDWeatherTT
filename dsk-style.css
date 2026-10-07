@@ -1,31 +1,37 @@
 /*! Desktop*/
 @media (min-width: 1025px) {
-    body{
+    body {
         text-align: center;
     }
 
-    .welcome img{
+    .welcome img {
         width: 500px;
         height: 500px;
     }
 
-    .welcome h1{
+    .welcome h1 {
         font-size: 80px;
     }
 
-    .head-bar h1{
+    .head-bar h1 {
         width: 90%;
     }
 
-    .searchbar-con{
+    .searchbar-con {
         width: 30%;
     }
 
-    .location-info{
+    .search-results {
+        width: 30%;
+        right: 5%;
+        top: 15%;
+    }
+
+    .location-info {
         width: 60%;
     }
 
-    .dsk{
+    .dsk {
         width: 100%;
         display: flex;
         align-items: center;
@@ -34,35 +40,34 @@
         gap: 20px;
     }
 
-    .weather-info{
+    .weather-info {
         width: 90%;
         flex-direction: row;
-        /* flex-wrap: wrap; */
     }
 
     .current-temp-con,
     .feels-like,
-    .min-max-con{
+    .min-max-con {
         width: 30%;
     }
 
     .feels-like-txt,
-    .feels-like-temp{
+    .feels-like-temp {
         font-weight: 600;
         font-size: 40px;
         text-wrap: balance;
     }
 
-    .feels-like-temp .temp-units{
+    .feels-like-temp .temp-units {
         font-size: 40px;
     }
 
     .max-con,
-    .min-con{
+    .min-con {
         border: none;
     }
 
-    .forecast-popup-info{
+    .forecast-popup-info {
         width: 90%;
         flex-direction: row;
         overflow-y: scroll;
@@ -73,12 +78,12 @@
         top: 100px;
     }
 
-    .popup-content{
+    .popup-content {
         width: 100%;
         height: fit-content
     }
 
-    .header{
+    .header {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -88,135 +93,140 @@
     }
 
     .header .time,
-    .header .temp{
+    .header .temp {
         font-size: 30px;
     }
 
-    #exit{
+    #exit {
         position: absolute;
         right: 100px;
     }
 
-    .mini-con{
+    .mini-con {
         width: 25%;
         height: auto;
     }
 
-    .mini-con img{
+    .mini-con img {
         width: 120px;
         height: 120px;
     }
 
-    .mini-con .cat-text{
+    .mini-con .cat-text {
         font-size: 25px;
     }
 
-    .full-day-forecast .cat-text{
+    .full-day-forecast .cat-text {
         font-size: 30px;
     }
 
-    .forecast-info{
+    .forecast-info {
         width: 90%;
     }
-    
-    .forecast-con{
-        overflow:auto;
+
+    .forecast-con {
+        overflow: auto;
         scroll-behavior: smooth;
     }
 
-    .forecast-con::-webkit-scrollbar{
+    .forecast-con::-webkit-scrollbar {
         display: block;
         height: 10px;
     }
 
     body::-webkit-scrollbar,
-    .forecast-popup-info.active::-webkit-scrollbar{
+    .forecast-popup-info.active::-webkit-scrollbar,
+    .search-results::-webkit-scrollbar {
         display: block;
         width: 10px;
     }
 
     body::-webkit-scrollbar-track,
     .forecast-con::-webkit-scrollbar-track,
-    .forecast-popup-info.active::-webkit-scrollbar-track{
-        background: var(--searchBarBg)
+    .forecast-popup-info.active::-webkit-scrollbar-track,
+    .search-results::-webkit-scrollbar-track {
+        background: var(--searchBarBg);
+        border-radius: 10px;
     }
 
     body::-webkit-scrollbar-thumb,
     .forecast-con::-webkit-scrollbar-thumb,
-    .forecast-popup-info.active::-webkit-scrollbar-thumb{
+    .forecast-popup-info.active::-webkit-scrollbar-thumb,
+    .search-results::-webkit-scrollbar-thumb {
         background-color: var(--scrollBarThumbColor);
         border-radius: 10px;
-        cursor:grab;
+        cursor: grab;
     }
 
     body::-webkit-scrollbar-thumb:hover,
     .forecast-con::-webkit-scrollbar-thumb:hover,
-    .forecast-popup-info.active::-webkit-scrollbar:hover{
+    .forecast-popup-info.active::-webkit-scrollbar-thumb:hover,
+    .search-results::-webkit-scrollbar-thumb:hover {
         background-color: var(--scrollBarThumbColorHover);
     }
 
-    .one-hour{
+    .one-hour {
         min-width: 15%;
         cursor: pointer
     }
 
-    .one-hour > .time{
+    .one-hour>.time {
         font-size: 25px;
         font-weight: 500;
     }
 
-    .one-hour > .temp{
+    .one-hour>.temp {
         font-size: 30px;
         font-weight: 500;
     }
 
-    .week-forecast-info{
+    .week-forecast-info {
         width: 90%;
     }
 
-    .week-forecast-info .cat-text{
+    .week-forecast-info .cat-text {
         font-size: 30px;
     }
 
-    .outlook-con{
+    .outlook-con {
         gap: 10px;
     }
 
-    .outlook-con .cat-text{
+    .outlook-con .cat-text {
         font-size: 30px
     }
 
     .outlook-con .day,
-    .outlook-con .hum > .humid,
-    .outlook-con .temps > .max-temp,
-    .outlook-con .temps > .min-temp{
+    .outlook-con .hum>.humid,
+    .outlook-con .temps>.max-temp,
+    .outlook-con .temps>.min-temp {
         font-size: 25px;
     }
 
     .hum img,
-    .day-con span > img{
+    .day-con span>img {
         width: 80px;
         height: 80px;
     }
 
-    .day-con{
+    .day-con {
         width: 90%;
     }
 
-    .temps{
+    .temps {
         gap: 30px;
     }
 
     .sun-info,
-    .moon-info{
+    .moon-info {
         width: 90%;
     }
-    
+
     .sunrise-con .cat-text,
     .sunset-con .cat-text,
     .moonrise-con .cat-text,
     .moonset-con .cat-text,
-    .moonphase .cat-text{
+    .moonphase .cat-text {
         font-size: 30px;
     }
 
@@ -224,7 +234,7 @@
     .sunset-con .time,
     .moonrise-con .time,
     .moonset-con .time,
-    .moonphase .time{
+    .moonphase .time {
         font-size: 30px;
     }
 
@@ -232,22 +242,22 @@
     .sunset-con img,
     .moonrise-con img,
     .moonset-con img,
-    .moonphase img{
+    .moonphase img {
         width: 250px;
         height: 250px;
     }
 
-    .moon-info-con{
+    .moon-info-con {
         flex-direction: row;
     }
 
     .moonrise-con,
     .moonset-con,
-    .moonphase{
+    .moonphase {
         width: 30%;
     }
 
-    .site-provisions{
+    .site-provisions {
         flex-direction: row;
     }
 }

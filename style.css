@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
-:root{
+:root {
     --bgColor: linear-gradient(180deg, lightblue, #23bef1, #2d55db, blue);
     --brandBgColor: #2d55dba8;
     --brandShadow: 0px 0px 10px #5ab2cf;
@@ -22,9 +22,10 @@
     --oneHourShadow: 0px 0px 5px #00bfff;
     --scrollBarThumbColor: #23bef1;
     --scrollBarThumbColorHover: #1581a5;
+    --searchResultBg: #87cefa65;
 }
 
-.darkmode{
+.darkmode {
     --bgColor: linear-gradient(180deg, #020233, #0c2447, #103163, #020233);
     --brandBgColor: #1f47c9a8;
     --brandShadow: 0px 0px 10px #103163;
@@ -46,10 +47,11 @@
     --oneHourShadow: 0px 0px 5px #00bfff;
     --scrollBarThumbColor: #23bef1;
     --scrollBarThumbColorHover: #1581a5;
+    --searchResultBg: #87cefa65;
 }
 
-.eveningmode{
-    --bgColor: linear-gradient(180deg, #c5c54e, #d4d471, #fabe4e, #f8794b);
+.eveningmode {
+    --bgColor: linear-gradient(180deg, goldenrod, #d4d471, #fabe4e, #f8794b);
     --brandBgColor: #f8794ba8;
     --brandShadow: 0px 0px 10px #f8794b;
     --brandTxtColor: #292929;
@@ -70,24 +72,27 @@
     --oneHourShadow: 0px 0px 5px #eb3f01;
     --scrollBarThumbColor: #fabe4e;
     --scrollBarThumbColorHover: #ffa807;
+    --searchResultBg: #f1d49ecc;
 }
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background: var(--bgColor);
     height: 100vh;
     margin-top: 50px;
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
 }
 
-.welcome{
+.welcome {
     position: fixed;
     inset: 0;
     z-index: 998;
@@ -103,18 +108,18 @@ body{
     gap: 0;
 }
 
-.welcome h1{
+.welcome h1 {
     font-family: "Poppins";
     font-weight: 600;
     font-size: 60px;
     color: var(--arrowSVGFill);
 }
 
-.welcome.hide{
+.welcome.hide {
     transform: scale(0);
 }
 
-.head-bar{
+.head-bar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -122,7 +127,7 @@ body{
     text-align: center;
 }
 
-.head-bar h1{
+.head-bar h1 {
     font-family: "Poppins";
     font-weight: 600;
     font-size: 30px;
@@ -137,15 +142,18 @@ body{
     transition: 0.3s all ease-in-out;
 }
 
-.tt{color: #ff2929;}
+.tt {
+    color: #ff2929;
+}
 
-.body-con{
+.body-con {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.searchbar-con{
+.searchbar-con {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -157,7 +165,48 @@ body{
     transition: 0.3s ease-in-out;
 }
 
-#search{
+.search-results.hide {
+    display: none;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    z-index: 999;
+    background-color: var(--searchResultBg);
+    gap: 15px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.search-results div {
+    font-size: 18px;
+    font-family: "Poppins";
+    background-color: var(--searchBarBg);
+    color: var(--textColorPrimary);
+    width: 90%;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.search-results div:hover {
+    color: var(--scrollBarThumbColorHover);
+}
+
+.dsk {
+    width: 100%;
+}
+
+#search {
     outline: none;
     border: none;
     width: 90%;
@@ -171,24 +220,25 @@ body{
     box-shadow: 0px 0px 10px --searchBarShadow;
     cursor: pointer;
     transition: 0.3s all ease-in-out;
+    color: var(--textColorPrimary);
 }
 
-#search::placeholder{
+#search::placeholder {
     color: var(--searchBarPlaceholder);
     transition: 0.3s all ease-in-out;
 }
 
-#search:hover{
+#search:hover {
     background-color: var(--searchBarHoverBg);
     box-shadow: var(--searchBarHoverShadow);
     color: var(--textColorPrimary);
 }
 
-#search:hover::placeholder{
+#search:hover::placeholder {
     color: var(--textColorPrimary);
 }
 
-.search-label{
+.search-label {
     background-color: var(--searchBarBg);
     width: 50px;
     height: 50px;
@@ -201,29 +251,55 @@ body{
     transition: 0.3s all ease-in-out;
 }
 
-.searchbar-con:focus-within #search{
+.searchbar-con:focus-within #search {
     background-color: var(--searchBarHoverBg);
     color: var(--textColorPrimary);
     box-shadow: var(--searchBarHoverShadow);
 }
 
-.searchbar-con:focus-within #search::placeholder{
+.searchbar-con:focus-within #search::placeholder {
     color: var(--textColorPrimary);
 }
 
-.search-label, .bi-search, #search{transition: 0.3s ease-in-out;}
+.search-label,
+.bi-search,
+#search {
+    transition: 0.3s ease-in-out;
+}
 
-.search-label:hover{
+.search-label:hover {
     background-color: var(--searchBarHoverBg);
     box-shadow: var(--searchBarShadow);
     cursor: pointer;
 }
 
-.search-label:hover .bi-search{
+.search-label:hover .bi-search {
     fill: var(--textColorPrimary);
 }
 
-.location-info{
+.cancel {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    font-family: "Poppins";
+    background-color: #ff0101;
+    color: whitesmoke;
+    box-shadow: 0px 0px 5px red;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.cancel:hover {
+    color: #ff0101;
+    background-color: #f87c7c;
+    box-shadow: var(--searchBarShadow);
+}
+
+.location-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -239,7 +315,7 @@ body{
     transition: 0.3s all ease-in-out;
 }
 
-.loc-name{
+.loc-name {
     font-family: "Poppins";
     font-size: 20px;
     text-align: center;
@@ -253,11 +329,15 @@ body{
     gap: 10px;
 }
 
+.loc-name svg {
+    fill: var(--arrowSVGFill);
+}
+
 .weather-info,
 .forecast-info,
 .week-forecast-info,
 .sun-info,
-.moon-info{
+.moon-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -278,15 +358,13 @@ body{
 .full-day-forecast,
 .sun-info-con,
 .moon-info-con,
-.week-forecast{
+.week-forecast {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    /*background-color: #23bef19d;*/
-    background: var(--tempConPrimaryBg); 
-    /*background: linear-gradient(45deg, #ffffff67, #dfd5d567, #dfd5d567, #ffffff67);*/
+    background: var(--tempConPrimaryBg);
     border-radius: 10px;
     box-shadow: var(--tempConShadow);
     font-family: "Poppins";
@@ -295,7 +373,7 @@ body{
     padding: 5px;
 }
 
-.feels-like{
+.feels-like {
     background: var(--tempConSecondaryBg);
     flex-direction: row;
     align-items: center;
@@ -304,12 +382,12 @@ body{
     gap: 10px;
 }
 
-.current-temp-con{
+.current-temp-con {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-evenly;
-    background:  var(--tempConPrimaryBg);
+    background: var(--tempConPrimaryBg);
     border-radius: 10px;
     box-shadow: var(--tempConShadow);
     font-family: "Poppins";
@@ -321,14 +399,16 @@ body{
     gap: 0;
 }
 
-.current-temp-con .cat-text{
+.current-temp-con .cat-text {
     flex-basis: 100%;
 }
 
-.min-max-con{flex-direction: row;}
+.min-max-con {
+    flex-direction: row;
+}
 
 .max-con,
-.min-con{
+.min-con {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -338,22 +418,27 @@ body{
     padding: 10px;
 }
 
-.min-con{border-left: var(--minMaxBorder)}
-.max-con{border-right: var(--minMaxBorder)}
+.min-con {
+    border-left: var(--minMaxBorder)
+}
+
+.max-con {
+    border-right: var(--minMaxBorder)
+}
 
 .bi-arrow-up,
-.bi-arrow-down{
+.bi-arrow-down {
     fill: var(--arrowSVGFill);
     transition: 0.3s all ease-in-out;
 }
 
-.cat-text{
-    color:var(--textColorPrimary);
+.cat-text {
+    color: var(--textColorPrimary);
     font-size: 20px;
     transition: 0.3s all ease-in-out;
 }
 
-.see-more{
+.see-more {
     color: var(--textColorPrimary);
     width: 100%;
     text-align: right;
@@ -363,7 +448,7 @@ body{
 
 .current-temp,
 .max-temp,
-.min-temp{
+.min-temp {
     font-size: 50px;
     font-weight: 600;
     color: var(--textColorPrimary);
@@ -371,7 +456,7 @@ body{
 }
 
 .feels-like-txt,
-.feels-like-temp{
+.feels-like-temp {
     font-size: 20px;
     color: var(--textColorPrimary);
     font-weight: 400;
@@ -380,20 +465,20 @@ body{
 
 .current-temp,
 .max-temp,
-.min-temp{
+.min-temp {
     display: flex;
     flex-direction: row;
     justify-content: center;
     justify-self: center;
 }
 
-.temp-units{
+.temp-units {
     font-size: 25px;
     color: var(--tempUnitsColor);
     transition: 0.3s all ease-in-out;
 }
 
-.forecast-con{
+.forecast-con {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -404,12 +489,14 @@ body{
     gap: 20px;
     padding: 20px;
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
-.forecast-con::-webkit-scrollbar{display: none;}
+.forecast-con::-webkit-scrollbar {
+    display: none;
+}
 
-.one-hour{
+.one-hour {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -423,27 +510,24 @@ body{
     gap: 0px;
 }
 
-.one-hour > .time{
+.one-hour>.time {
     font-size: 18px;
     font-family: "Poppins";
     color: var(--textColorPrimary)
 }
 
-.one-hour > .temp{
+.one-hour>.temp {
     font-size: 22px;
     font-family: "Poppins";
     color: var(--textColorPrimary)
 }
 
-.forecast-popup-info{
+.forecast-popup-info {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
     height: 100vh;
-    /*background-color: #23bef19d;*/
-    /*background: linear-gradient(180deg, #020233c0, #0c2447c0, #103163c0, #020233c0);*/ 
-    /*background: linear-gradient(45deg, #ffffff67, #dfd5d567, #dfd5d567, #ffffff67);*/
     background-color: var(--brandBgColor);
     border-radius: 10px;
     box-shadow: var(--tempConShadow);
@@ -465,14 +549,14 @@ body{
     transform: scale(1);
 }
 
-.popup-content{
+.popup-content {
     padding: 10px;
     border-radius: 10px;
     box-shadow: var(--oneHourShadow);
     background-color: var(--oneHourBg);
 }
 
-.header{
+.header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -484,12 +568,12 @@ body{
     margin-bottom: 20px;
 }
 
-.header .weather-icon{
+.header .weather-icon {
     width: 100px;
     height: 100px;
 }
 
-.header button{
+.header button {
     width: 40px;
     height: 40px;
     font-family: "Poppins";
@@ -503,35 +587,34 @@ body{
     transition: 0.3s ease-in-out;
 }
 
-.header button:hover{
+.header button:hover {
     background-color: var(--searchBarHoverBg);
     box-shadow: var(--searchBarHoverShadow);
     transform: rotate(360deg);
 }
 
 .header .time,
-.header .temp{
+.header .temp {
     font-size: 22px;
     font-family: "Poppins";
     color: var(--textColorPrimary);
     font-weight: 600;
 }
 
-.mini-containers{
+.mini-containers {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-evenly;
-    /* flex-wrap: balance; */
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.mini-con{
+.mini-con {
     width: 47%;
     background-color: var(--brandBgColor);
     border-radius: 10px;
-    height:220px;
+    height: 220px;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -539,12 +622,12 @@ body{
     justify-content: space-evenly;
 }
 
-.mini-con img{
+.mini-con img {
     width: 100px;
     height: 100px;
 }
 
-.outlook-con{
+.outlook-con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -553,7 +636,7 @@ body{
     gap: 2px;
 }
 
-.day-con{
+.day-con {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -565,10 +648,12 @@ body{
     margin-top: 10px;
 }
 
-.day{width: 10%}
+.day {
+    width: 10%
+}
 
 .day,
-.humid{
+.humid {
     font-size: 15px;
     font-family: "Poppins";
     font-weight: 600;
@@ -576,36 +661,38 @@ body{
 }
 
 .temps,
-.hum{
+.hum {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
 }
 
-.hum{gap: 0;}
+.hum {
+    gap: 0;
+}
 
-.hum img{
+.hum img {
     width: 50px;
-    height:50px;
+    height: 50px;
 }
 
 .temps .max-temp,
-.temps .min-temp{
+.temps .min-temp {
     font-size: 15px;
 }
 
 .sunrise-con .time,
 .sunset-con .time,
 .moonrise-con .time,
-.moonset-con .time{
+.moonset-con .time {
     font-size: 18px;
     font-family: "Poppins";
     color: var(--textColorPrimary);
 }
 
 .sun-info-con,
-.moon-info-con{
+.moon-info-con {
     flex-direction: row;
     align-items: stretch;
     justify-content: space-evenly;
@@ -618,7 +705,7 @@ body{
 .sunset-con,
 .moonrise-con,
 .moonset-con,
-.moonphase{
+.moonphase {
     padding: 10px;
     border-radius: 10px;
     box-shadow: var(--oneHourShadow);
@@ -626,9 +713,11 @@ body{
     width: 40%;
 }
 
-.moonphase{width: 90%}
+.moonphase {
+    width: 90%
+}
 
-.footer{
+.footer {
     background: var(--tempConPrimaryBg);
     width: 100%;
     padding: 10px 0 10px 0;
@@ -636,7 +725,7 @@ body{
     border-radius: 10px 10px 0px 0px;
 }
 
-.footer-content p{
+.footer-content p {
     font-size: 18px;
     font-weight: 500;
     font-family: "Poppins";
@@ -644,29 +733,29 @@ body{
     margin: 10px;
 }
 
-.footer-content hr{
+.footer-content hr {
     width: 100%;
     background-color: var(--arrowSVGFill);
     border-color: var(--arrowSVGFill);
 }
 
-.footer-content p > a{
+.footer-content p>a {
     color: var(--arrowSVGFill)
 }
 
-.site-provisions{
+.site-provisions {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
 
-.site-provisions p{
+.site-provisions p {
     text-wrap: balance;
 }
 
-.foot-icons{
+.foot-icons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -676,30 +765,30 @@ body{
     padding: 10px;
 }
 
-.bi-github{
+.bi-github {
     width: 40px;
     height: 40px;
     fill: black;
     transition: 0.5s ease-in-out;
-    cursor:pointer
+    cursor: pointer
 }
 
-.foot-icons img{
+.foot-icons img {
     width: 50px;
     height: 50px;
     transition: 0.5s ease-in-out;
 }
 
-.foot-icons img:hover{
+.foot-icons img:hover {
     transform: rotate(360deg);
 }
 
-.bi-github:hover{
+.bi-github:hover {
     transform: rotate(360deg);
     fill: var(--arrowSVGFill)
 }
 
-.copyright{
+.copyright {
     display: flex;
     flex-direction: row;
     align-items: center;

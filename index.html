@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#2d55db">
+    <meta name="theme-color" content="#2d55db" id="theme-color">
+    <meta name="author" content="Asif Mohammed">
+    <meta name="keywords" content="Weather, Weather App, Sun, Rain, Windy, Cloudy, Stormy, Trinidad and Tobago">
+    <meta property="og:title" content="WayzDWeatherTT">
+    <meta property="og:image" content="/SVGs/animated/partly-cloudy-day.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="wayz-d-weather-tt.vercel.app">
+    <meta property="og:site_name" content="WayzDWeatherTT">
+    <meta name="og:description"
+        content="Your weather, your way. Get real-time weather conditions and forecasts for anywhere in the world.">
     <title>WayzDWeatherTT</title>
+    <link rel="icon" href="/SVGs/animated/partly-cloudy-day.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dsk-style.css">
     <script type="module" src="script.js"></script>
-    <script type="module" src="gsap.js"></script>
 </head>
+
 <body>
     <div class="welcome" id="welcome">
-        <h1 id="greet">Good Day!</h1>
+        <h1 id="greet"></h1>
         <img src="/SVGs/animated/cloudy.svg">
-        <h1 id="welcome-time">9:39pm</h1>
+        <h1 id="welcome-time"></h1>
     </div>
     <div class="main">
         <div class="head-bar">
@@ -24,17 +35,23 @@
             <span class="dsk">
                 <div class="searchbar-con">
                     <input type="text" placeholder="Search Location" id="search">
-                    <label for="search" class="search-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="lightgrey" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    <label for="search" class="search-label" id="search-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="lightgrey"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                         </svg>
                     </label>
+                    <button id="cancel" class="cancel" type="button">X</button>
                 </div>
+                <div class="search-results" id="search-results"></div>
                 <div class="location-info" id="loc-info-con">
                     <div class="location-name">
                         <p class="loc-name" id="loc-name">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="lightgrey" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="lightgrey"
+                                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
                             </svg>
                             Finding Your Location...
                         </p>
@@ -53,15 +70,19 @@
                 </div>
                 <div class="min-max-con" id="min-max-con">
                     <div class="max-con">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
                         </svg>
                         <p class="max-temp" id="max-temp">--</p>
                     </div>
-                    
+
                     <div class="min-con">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
                         </svg>
                         <p class="min-temp" id="min-temp">--</p>
                     </div>
@@ -122,7 +143,7 @@
                         <img alt="moonset-icon" src="/SVGs/animated/moonset.svg">
                         <p class="time" id="moonset-time">--</p>
                     </div>
-                    
+
                     <div class="moonphase">
                         <p class="cat-text">Moon Phase</p>
                         <img alt="moonphase-icon" id="moonphase-icon">
@@ -132,21 +153,25 @@
             </div>
         </div>
     </div>
-    
-    <button id="switch">switch</button>
+
+    <!-- <button id="switch">switch</button> -->
+    <br><br><br>
     <div class="footer">
         <div class="footer-content">
             <p>WayzDWeather<span class="tt">TT</span></p>
             <hr>
             <span class="site-provisions">
-                <p>Powered By:<br> <a target="_blank" href="https://open-meteo.com/">Open-Meteo</a> | <a target="_blank" href="https://nominatim.openstreetmap.org/">OpenStreetMap</a></p>
+                <p>Powered By:<br> <a target="_blank" href="https://open-meteo.com/">Open-Meteo</a> | <a target="_blank"
+                        href="https://nominatim.openstreetmap.org/">OpenStreetMap</a></p>
                 <p>Icons Provided By:<br> <a target="_blank" href="https://meteocons.com/">Meteocons</a></p>
             </span>
             <hr>
             <span class="foot-icons">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                <a target="_blank" href="https://github.com/AsifMohd18-dev/WayzDWeatherTT">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-github" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                     </svg>
                 </a>
 
@@ -158,14 +183,22 @@
                 &COPY; 2026 WayzDWeatherTT
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#c93039"></rect>
-                    <path d="M29.926,26.711L11,4H5c-1.159,0-2.195,.501-2.926,1.289L21,28h6c1.159,0,2.195-.501,2.926-1.289Z" fill="#fff"></path>
-                    <path d="M9.692,4H5c-.8,0-1.541,.241-2.166,.645L22.328,28h4.672c.806,0,1.552-.243,2.18-.653L9.692,4Z"></path>
-                    <path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path>
-                    <path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path>
+                    <path
+                        d="M29.926,26.711L11,4H5c-1.159,0-2.195,.501-2.926,1.289L21,28h6c1.159,0,2.195-.501,2.926-1.289Z"
+                        fill="#fff"></path>
+                    <path
+                        d="M9.692,4H5c-.8,0-1.541,.241-2.166,.645L22.328,28h4.672c.806,0,1.552-.243,2.18-.653L9.692,4Z">
+                    </path>
+                    <path
+                        d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
+                        opacity=".15"></path>
+                    <path
+                        d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
+                        fill="#fff" opacity=".2"></path>
                 </svg>
             </p>
-            
         </div>
     </div>
 </body>
+
 </html>
